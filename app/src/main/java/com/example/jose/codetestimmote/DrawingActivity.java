@@ -1,26 +1,37 @@
 package com.example.jose.codetestimmote;
 
+import android.app.Activity;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
-import android.support.v7.app.AppCompatActivity;
+import android.view.View;
+import android.widget.Button;
+import android.widget.TextView;
 
 /**
  * Created by Jose on 22/10/2017.
  */
 
-public class DrawingActivity extends AppCompatActivity {
+public class DrawingActivity extends Activity{
 
-    private float r1, r2, r3;
-
+    private Button buttonDraw;
+    private CustomView customView;
+    private TextView scaleText;
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_drawing);
+        buttonDraw = (Button)findViewById(R.id.buttonDraw);
+        customView = (CustomView)findViewById(R.id.customView);
+        scaleText = (TextView)findViewById(R.id.scaleText);
 
-        r1 = getIntent().getExtras().getFloat("R1");
-        r2 = getIntent().getExtras().getFloat("R2");
-        r3 = getIntent().getExtras().getFloat("R3");
+        scaleText.setText(scaleText.getText().toString() + getIntent().getExtras().getFloat("Scale") + "x");
 
 
+        buttonDraw.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                customView.drawCircles();
+            }
+        });
     }
 }

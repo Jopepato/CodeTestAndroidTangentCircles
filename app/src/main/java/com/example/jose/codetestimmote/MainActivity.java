@@ -123,6 +123,7 @@ public class MainActivity extends AppCompatActivity {
             mBundle.putFloat("R1", r1);
             mBundle.putFloat("R2", r2);
             mBundle.putFloat("R3", r3);
+            mBundle.putFloat("Scale", getPerfectScale(r1));
             mIntent.putExtras(mBundle);
             startActivity(mIntent);
         }else{
@@ -143,5 +144,10 @@ public class MainActivity extends AppCompatActivity {
         }else{
             return true;
         }
+    }
+
+    private float getPerfectScale(float r1){
+        float scale = 400/r1;
+        return scale;
     }
 }
