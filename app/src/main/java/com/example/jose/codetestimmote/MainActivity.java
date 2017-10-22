@@ -1,11 +1,13 @@
 package com.example.jose.codetestimmote;
 
 import android.content.Intent;
+import android.graphics.Point;
 import android.support.annotation.FloatRange;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
+import android.view.Display;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -146,8 +148,11 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
-    private float getPerfectScale(float r1){
-        float scale = 400/r1;
+    private int getPerfectScale(float r1){
+        Display display = getWindowManager().getDefaultDisplay();
+        Point size = new Point();
+        display.getSize(size);
+        int scale = Math.round((size.x/2)/r1);
         return scale;
     }
 }

@@ -10,6 +10,12 @@ public class Circle {
     private float centerX_;
     private float centerY_;
 
+    public Circle(){}
+
+    public Circle(float radius){
+        setRadius(radius);
+    }
+
     public Circle(float radius, float centerX, float centerY){
         setRadius(radius);
         setCenterX(centerX);
