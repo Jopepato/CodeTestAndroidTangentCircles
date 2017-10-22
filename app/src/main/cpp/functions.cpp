@@ -4,8 +4,6 @@
 
 #include <iostream>
 #include <cmath>
-#include <string>
-#include <jni.h>
 
 using namespace std;
 
@@ -42,18 +40,19 @@ JNIEXPORT void JNICALL Java_com_example_jose_codetestimmote_DrawingActivity_calc
 
 
 //With this function we will calculate the radius of the others circles, using the Descarte's formula
+//k = +-1/r (Depending if it is an external or internal tangent)
+//k4 = k1 + k2 + k3 +-2*sqrt(k1*k2 + k2*k3 + k3*k1)
 jfloat descartesRadius(jfloat r1, jfloat r2, jfloat r3){
 
 	jfloat k1 = (-1)/r1;
 	jfloat k2 = 1/r2;
 	jfloat k3 = 1/r3;
 
-	//Now we can have two solutions and we will print both and decide what to choose
 
 	jfloat insideSqrt = abs((k1*k2) + (k2*k3) + (k3*k1));
 	jfloat radius = k1 + k2 + k3 + sqrt(insideSqrt);
 	jfloat radiusMinus = k1 + k2 + k3 - sqrt(insideSqrt);
-
+    //We take both solutions and get the one that is positive. But in thoses cases both solutions will resemble the same.
 	if(radius < 0){
 		radius = radiusMinus;
 	}
@@ -66,6 +65,16 @@ JNIEXPORT void JNICALL Java_com_example_jose_codetestimmote_DrawingActivity_calc
 
 	//We have to calculate the equation system for solving this problem
 	//As we want the circles to be, one inner tangent and the others two outter tangents
+    //We have to solve the following equation:
+    // (Xs - X1)^2 + (Ys - Y1)^2 = (Rs - S1*R1)^2
+    // (Xs - X2)^2 + (Ys - Y2)^2 = (Rs - S2*R2)^2
+    // (Xs - X3)^2 + (Ys - Y3)^2 = (Rs - S3*R3)^2
+    //As we can get Rs from the Descarte's formula this system will be easier
+    //Also, we can generalize for the line Y=0, as all the three circle will have that property
+    //So we can reduce the system to the following:
+    // (Xs - X1)^2 + Ys^2 = (R4 - R1)^2
+    // (Xs - X2)^2 + Ys^2 = (R4 + R2)^2
+    //Solving that equation we will have the solution
 
     jclass cls = env->GetObjectClass(circle1);
     jfieldID xID = env->GetFieldID(cls, "centerX_", "F");
@@ -89,6 +98,8 @@ JNIEXPORT void JNICALL Java_com_example_jose_codetestimmote_DrawingActivity_calc
 
 	jfloat y = sqrt(num);
 
+    //As in this special case, both tangent circles will be in the same X, but like a mirror
+    //they will have opposite Y, as a reflection
     env->SetFloatField(circle4, xID, x);
     env->SetFloatField(circle4, yID, y);
     env->SetFloatField(circle4, rID, r4);
@@ -100,8 +111,8 @@ JNIEXPORT void JNICALL Java_com_example_jose_codetestimmote_DrawingActivity_calc
 }
 
 
-
-void calculateTangentCircles2(Circle circle1, Circle circle2, Circle circle3){
+/*
+void calculateTangentCircles(Circle circle1, Circle circle2, Circle circle3){
 
 	//We hace to calculate the equation system for solving this problem
 	//As we want the circles to be, one inner tangent and the others two outter tangents
@@ -167,10 +178,9 @@ void calculateTangentCircles2(Circle circle1, Circle circle2, Circle circle3){
 	float ys = P + Q * rs;
 
 	//We have the circle now
-	cout << "Circle tangent: " << endl;
-	cout << "Radius: " << rs << endl;
-	cout << "Center: " << "(" << xs << ", " << ys << ")" << endl;
+
 
 	//We can get the other circle using the opposite of xs
 
 }
+ */

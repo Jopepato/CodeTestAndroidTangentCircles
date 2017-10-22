@@ -55,6 +55,7 @@ public class CustomView extends View {
         paint.setStyle(Paint.Style.STROKE);
         paint.setStrokeWidth(7);
         canvas.drawPaint(paint);
+        //To get the middle of the screen as the 0,0
         int x = getWidth()/2;
         int y = getHeight()/2;
 
@@ -70,6 +71,8 @@ public class CustomView extends View {
             canvas.drawCircle(x + circle4.getCenterX() * scale, y + circle4.getCenterY()*scale, circle4.getRadius()*scale, paint);
             canvas.drawCircle(x + circle5.getCenterX() * scale, y + circle5.getCenterY()*scale, circle5.getRadius()*scale, paint);
         }
+
+        paint.setColor(Color.WHITE);
     }
 
 

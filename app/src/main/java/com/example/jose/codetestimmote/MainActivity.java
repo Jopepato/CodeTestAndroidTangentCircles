@@ -28,6 +28,7 @@ public class MainActivity extends AppCompatActivity {
         editTextRadius2 = (EditText)findViewById(R.id.editTextRadius2);
         editTextRadius3 = (EditText)findViewById(R.id.editTextRadius3);
 
+        //We add the listeners to the three editTexts to enable the buttom when the three have something inside
         editTextRadius3.addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence s, int start, int count, int after) {
@@ -115,7 +116,6 @@ public class MainActivity extends AppCompatActivity {
         });
 
     }
-
     private void checkRadius(float r1, float r2, float r3){
         //Check if the radius fulfills the condition r1 = r2 + r3;
         if(r1 == (r2+r3)){
@@ -148,6 +148,7 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
+    //Getting the perect scale for showing the circles in the next screen
     private int getPerfectScale(float r1){
         Display display = getWindowManager().getDefaultDisplay();
         Point size = new Point();

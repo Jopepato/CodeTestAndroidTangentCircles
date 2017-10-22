@@ -5,8 +5,7 @@
 
     <com.example.jose.codetestimmote.CustomView
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_marginBottom="50dp"
+        android:layout_height="440dp"
         android:id="@+id/customView" />
 
     <RelativeLayout
@@ -14,28 +13,33 @@
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
->
+        android:layout_below="@+id/customView"
+        android:layout_marginRight="10dp"
+        android:layout_marginLeft="10dp">
         <Button
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_centerHorizontal="true"
             android:id="@+id/buttonDraw"
-            android:text="draw Circle!"/>
+            android:text="Draw Tangents!"/>
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
             android:layout_below="@+id/buttonDraw"
+            android:layout_alignParentLeft="true"
             android:id="@+id/textViewRadius4"
-            android:text="Radius R4: "
+            android:text="R4: "
             android:textSize="22dp"/>
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
             android:layout_alignParentRight="true"
             android:layout_below="@+id/buttonDraw"
             android:id="@+id/textViewRadius5"
-            android:text="Radius R5: "
+            android:text="R5: "
             android:textSize="22dp"/>
 
         <TextView
@@ -44,7 +48,7 @@
             android:id="@+id/scaleText"
             android:layout_below="@+id/buttonDraw"
             android:layout_centerHorizontal="true"
-            android:layout_marginTop="4dp"
+            android:layout_marginTop="10dp"
             android:text="Scale: "
             android:textSize="18dp"/>
 

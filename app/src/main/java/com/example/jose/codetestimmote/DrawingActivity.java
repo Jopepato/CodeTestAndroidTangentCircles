@@ -28,8 +28,8 @@ public class DrawingActivity extends Activity{
     private TextView scaleText;
     private TextView radius4Text, radius5Text;
     private float r1, r2, r3, scale;
-    private int count=1;
-    Circle circle1, circle2, circle3, circle4, circle5;
+    private Circle circle1, circle2, circle3, circle4, circle5;
+
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -40,6 +40,7 @@ public class DrawingActivity extends Activity{
         radius4Text = (TextView)findViewById(R.id.textViewRadius4);
         radius5Text = (TextView)findViewById(R.id.textViewRadius5);
 
+        //We show the scale to the user
         scaleText.setText(scaleText.getText().toString() + getIntent().getExtras().getFloat("Scale") + "x");
 
         //We get the extras from the bundle
@@ -47,18 +48,22 @@ public class DrawingActivity extends Activity{
         r2 = getIntent().getExtras().getFloat("R2");
         r3 = getIntent().getExtras().getFloat("R3");
         scale = getIntent().getExtras().getFloat("Scale");
+        //And construct the circles with those radius
         circle1 = new Circle(r1);
         circle2 = new Circle(r2);
         circle3 = new Circle(r3);
         circle4 = new Circle();
         circle5 = new Circle();
+        //Just to calculate the coordinates of these three first circles and show them on the screen
         calculateCoordinates(circle1, circle2, circle3);
 
         customView.setCircle1(circle1);
         customView.setCircle2(circle2);
         customView.setCircle3(circle3);
         customView.setScale(scale);
+        customView.drawCircles();
 
+        //We calcaulate the tangent circles to get them ready for the user when it'll push the button
         calculateTangentCirclesSameLine(circle1, circle2, circle3, circle4, circle5);
 
         customView.setCircle4(circle4);
@@ -67,17 +72,10 @@ public class DrawingActivity extends Activity{
         buttonDraw.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if(count==1) {
-                    customView.drawCircles();
-                    buttonDraw.setText("Draw Tangents!");
-                    count--;
-                }else if(count == 0){
                     customView.drawTangentCircles();
                     //Set the texts of the radius
                     radius4Text.setText("R4: " + String.format("%.2g%n", circle4.getRadius()));
                     radius5Text.setText("R5: " + String.format("%.2g%n", circle5.getRadius()));
-
-                }
             }
         });
     }
