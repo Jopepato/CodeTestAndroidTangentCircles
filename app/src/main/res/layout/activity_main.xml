@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.example.jose.codetestimmote.MainActivity">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:text="Introduce the radius of the circles"
+        android:textSize="22dp"
+        android:textStyle="bold"
+        android:layout_marginTop="50dp"/>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:layout_alignParentLeft="true"
+        android:gravity="center"
+        android:id="@+id/bigRelative">
+
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:layout_alignParentLeft="true"
+            android:layout_margin="5dp"
+            android:id="@+id/relative1">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:id="@+id/textView1"
+                android:text="Circle 1:"
+                android:textSize="15dp"
+                android:layout_margin="5dp"/>
+            <EditText
+                android:id="@+id/editTextRadius1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/textView1"
+                android:gravity="center"
+                android:ems="5"
+                android:inputType="number" />
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:id="@+id/relative2"
+            android:layout_toRightOf="@+id/relative1"
+            android:layout_margin="5dp">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:id="@+id/textView2"
+                android:text="Circle 2:"
+                android:textSize="15dp"
+                android:layout_margin="5dp"/>
+            <EditText
+                android:id="@+id/editTextRadius2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/textView2"
+                android:gravity="center"
+                android:ems="5"
+                android:inputType="number" />
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:id="@+id/relative3"
+            android:layout_toRightOf="@+id/relative2"
+            android:layout_margin="5dp">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:id="@+id/textView3"
+                android:text="Circle 3:"
+                android:textSize="15dp"
+                android:layout_margin="5dp"/>
+            <EditText
+                android:id="@+id/editTextRadius3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/textView3"
+                android:gravity="center"
+                android:ems="5"
+                android:inputType="number" />
+        </RelativeLayout>
+
+    </RelativeLayout>
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:enabled="false"
+        android:id="@+id/buttonDraw"
+        android:layout_centerHorizontal="true"
+        android:layout_below="@+id/bigRelative"
+        android:text="Draw!"
+        android:layout_marginTop="30dp"
+        android:layout_marginLeft="30dp"
+        android:layout_marginRight="30dp"/>
+
+</RelativeLayout>
